@@ -1,0 +1,4 @@
+
+# grab the arp table on debian/nix, and cut just the IPs and MACs out, sort by IP, and seperate by a tab.
+
+/sbin/arp -an | awk '{print $2"\t" $4}' | sed 's/[(),]//g' | sort -t . -k 3,3n -k 4,4n  | uniq > arps.txt	
